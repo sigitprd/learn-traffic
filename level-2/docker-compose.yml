@@ -1,0 +1,42 @@
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: nginx-lb
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api-1
+      - api-2
+      - api-3
+    networks:
+      - lb-net
+
+  api-1:
+    image: go-api:v1
+    container_name: api-1
+    environment:
+      - PORT=8080
+    networks:
+      - lb-net
+
+  api-2:
+    image: go-api:v1
+    container_name: api-2
+    environment:
+      - PORT=8080
+    networks:
+      - lb-net
+
+  api-3:
+    image: go-api:v1
+    container_name: api-3
+    environment:
+      - PORT=8080
+    networks:
+      - lb-net
+
+networks:
+  lb-net:
+    driver: bridge

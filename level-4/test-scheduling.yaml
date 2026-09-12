@@ -1,0 +1,24 @@
+# SEMENTARA — buat buktiin scheduler nolak Pod kalau requests kelewat
+# kapasitas node. HAPUS lagi setelah dibuktikan (lihat README poin 3).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-scheduling
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-scheduling
+  template:
+    metadata:
+      labels:
+        app: test-scheduling
+    spec:
+      containers:
+        - name: hog
+          image: go-api:v1
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: "8000m"
+              memory: "64Mi"
