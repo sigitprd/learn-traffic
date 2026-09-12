@@ -55,7 +55,7 @@ atau restart laptop.
 ## Konvensi command di semua guide
 
 - Command diasumsikan dijalankan dari root folder repo
-  (`orchestrator-ai-app/`), kecuali disebutkan `cd` ke folder tertentu.
+  (`learn-traffic/`), kecuali disebutkan `cd` ke folder tertentu.
 - `kubectl` di environment ini kadang nyetak warning
   `couldn't get resource list for metrics.k8s.io/v1beta1 ...` di stderr
   sebelum metrics-server jalan — ini HARMLESS, abaikan, bukan tanda error.
